@@ -24,7 +24,7 @@ contract Vesting{
 
     /// @notice add new founder
     function addFounder(address _founder, uint256 _timeToMaturity) external payable{
-        require(msg.sender == admin, 'only admin allowed'); //check if spender is admin
+        require(_founder == admin, 'only admin allowed'); //check if spender is admin
         require(founders[_founder].amount == 0, 'founder already exists'); // check if founder already exists
 
         founders[_founder] = Founder(msg.value, block.timestamp + _timeToMaturity, false);
